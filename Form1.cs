@@ -13,7 +13,7 @@ namespace Figuras
         public Form1()
         {
             InitializeComponent();
-            figuras = new Figura[3] 
+            figuras = new Figura[3]
             {
                 new Circulo(60),
                 new Rectangulo(30,50),
@@ -22,15 +22,28 @@ namespace Figuras
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Graphics gr = pictureBox1.CreateGraphics();
-            Pen pen = new Pen(Color.Red);
-            for (int i = 0; i < figuras.Length; i++)
-            {
-                figuras[i].Dibujar(pen,gr,i * 100, 50);
-            }
+    private void button1_Click(object sender, EventArgs e)
+{
+    Graphics gr = pictureBox1.CreateGraphics();
 
+    for (int i = 0; i < figuras.Length; i++)
+    {
+        using (Pen pen = new Pen(figuras[i].Color))
+        {
+            figuras[i].Dibujar(pen, gr, i * 100, 50);
         }
     }
+}
+    public Form1()
+{
+    InitializeComponent();
+
+    figuras = new Figura[3]
+    {
+        new Circulo(60) { Color = Color.Red },
+        new Rectangulo(30, 50) { Color = Color.Green },
+        new Cuadrado(45) { Color = Color.Blue },
+    };
+}
+
 }

@@ -5,7 +5,13 @@ namespace Figuras
 {
     public class Figura
     {
-        public virtual void Dibujar(Pen pen, Graphics graphics, int x, int y)
+        public Color Color { get; set; }
+
+        public Figura()
+        {
+            Color = Color.Black; //valor
+        }
+            public virtual void Dibujar(Pen pen, Graphics graphics, int x, int y)
         { 
             
         }
