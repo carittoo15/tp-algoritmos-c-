@@ -10,26 +10,27 @@ namespace Figuras
     {
         Figura[] figuras;
 
-        public Form1()
-        {
-            InitializeComponent();
+public Form1()
+{
+    InitializeComponent();
 
-            Random random = new Random(); // Generador de colores aleatorios
+    Random random = new Random(); // Generador de colores aleatorios
 
-            figuras = new Figura[3]
-            {
-                new Circulo(60),
-                new Rectangulo(30, 50),
-                new Cuadrado(45),
-            };
+    figuras = new Figura[3]
+    {
+        // Hago que cada figura tenga un tamaño mayor que la anterior para que se vean crecientes de izquierda a derecha
+        new Circulo(40),
+        new Rectangulo(60, 80),
+        new Cuadrado(100),
+    };
 
-            // Uso la clase Random y Color.FromArgb para asignarle un color aleatorio a cada figura
-            foreach (var figura in figuras)
-            {
-                // Restringo los valores RGB para evitar colores muy claros y que las figuras se vean bien sobre fondo blanco
-                figura.Color = Color.FromArgb(random.Next(0, 180), random.Next(0, 180), random.Next(0, 180));
-            }
-        }
+    // Uso la clase Random y Color.FromArgb para asignarle un color aleatorio a cada figura
+    foreach (var figura in figuras)
+    {
+        // Restringo los valores RGB para evitar colores muy claros y que las figuras se vean bien sobre fondo blanco
+        figura.Color = Color.FromArgb(random.Next(0, 180), random.Next(0, 180), random.Next(0, 180));
+    }
+}
 
         private void button1_Click(object sender, EventArgs e)
         {
