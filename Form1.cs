@@ -13,37 +13,36 @@ namespace Figuras
         public Form1()
         {
             InitializeComponent();
+
+            Random random = new Random(); // Generador de colores aleatorios
+
             figuras = new Figura[3]
             {
                 new Circulo(60),
-                new Rectangulo(30,50),
+                new Rectangulo(30, 50),
                 new Cuadrado(45),
             };
 
+            // Uso la clase Random y Color.FromArgb para asignarle un color aleatorio a cada figura
+            foreach (var figura in figuras)
+            {
+                // Restringo los valores RGB para evitar colores muy claros y que las figuras se vean bien sobre fondo blanco
+                figura.Color = Color.FromArgb(random.Next(0, 180), random.Next(0, 180), random.Next(0, 180));
+            }
         }
 
-    private void button1_Click(object sender, EventArgs e)
-{
-    Graphics gr = pictureBox1.CreateGraphics();
-
-    for (int i = 0; i < figuras.Length; i++)
-    {
-        using (Pen pen = new Pen(figuras[i].Color))
+        private void button1_Click(object sender, EventArgs e)
         {
-            figuras[i].Dibujar(pen, gr, i * 100, 50);
+            Graphics gr = pictureBox1.CreateGraphics();
+
+            for (int i = 0; i < figuras.Length; i++)
+            {
+                // Uso el color de cada figura para crear el Pen antes de dibujarla
+                using (Pen pen = new Pen(figuras[i].Color))
+                {
+                    figuras[i].Dibujar(pen, gr, i * 100, 50);
+                }
+            }
         }
     }
-}
-    public Form1()
-{
-    InitializeComponent();
-
-    figuras = new Figura[3]
-    {
-        new Circulo(60) { Color = Color.Red },
-        new Rectangulo(30, 50) { Color = Color.Green },
-        new Cuadrado(45) { Color = Color.Blue },
-    };
-}
-
 }
