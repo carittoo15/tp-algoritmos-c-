@@ -15,14 +15,16 @@ public Form1()
     InitializeComponent();
 
     Random random = new Random(); // Generador de colores aleatorios
-
-    figuras = new Figura[3]
-    {
         // Hago que cada figura tenga un tamaño mayor que la anterior para que se vean crecientes de izquierda a derecha
-        new Circulo(40),
-        new Rectangulo(60, 80),
-        new Cuadrado(100),
-    };
+figuras = new Figura[5]
+{
+    new Circulo(40),
+    new Rectangulo(60, 80),
+    new Cuadrado(100),
+    new TrianguloIsosceles(120, 100),
+    new TrianguloEquilatero(120),
+};
+
 
     // Uso la clase Random y Color.FromArgb para asignarle un color aleatorio a cada figura
     foreach (var figura in figuras)
